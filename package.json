@@ -1,0 +1,24 @@
+{
+  "name": "exchange-rate-converter",
+  "version": "1.0.0",
+  "description": "Exchange Rate Converter",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brettcelestre/exchange-rate-converter.git"
+  },
+  "keywords": [
+    "exchange",
+    "rate",
+    "converter"
+  ],
+  "author": "Brett Celestre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brettcelestre/exchange-rate-converter/issues"
+  },
+  "homepage": "https://github.com/brettcelestre/exchange-rate-converter#readme"
+}
