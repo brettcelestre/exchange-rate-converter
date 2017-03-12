@@ -24,10 +24,22 @@ angular.module('appRoutes', [])
       }
     })
 
+    // Login state config
+    .state('home.converter', {
+      parent: 'home',
+      url: 'converter',
+      views: {
+        'converter': {
+          templateUrl: 'app/shared/converter/converterView.html',
+          controller: 'ConverterController'
+        }
+      }
+    });
+
 }])
 
-.run(['$rootScope', '$state', '$stateParams', 'Main',
-  function ($rootScope, $state, $stateParams, Main) {
+.run(['$rootScope', '$state', '$stateParams',
+  function ($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
 
