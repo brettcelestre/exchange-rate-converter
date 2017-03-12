@@ -4,6 +4,7 @@
   "description": "Exchange Rate Converter",
   "main": "server.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "npm test"
   },
   "repository": {
@@ -20,5 +21,18 @@
   "bugs": {
     "url": "https://github.com/brettcelestre/exchange-rate-converter/issues"
   },
-  "homepage": "https://github.com/brettcelestre/exchange-rate-converter#readme"
+  "homepage": "https://github.com/brettcelestre/exchange-rate-converter#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "morgan": "^1.8.1",
+    "webpack": "^2.2.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "jasmine": "^2.5.3",
+    "mocha": "^3.2.0",
+    "path": "^0.12.7",
+    "webpack": "^2.2.1"
+  }
 }

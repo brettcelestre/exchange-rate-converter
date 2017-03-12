@@ -1,0 +1,26 @@
+{
+  "name": "exchange-rate-converter",
+  "description": "Exchange Rate Converter",
+  "main": "server.js",
+  "authors": [
+    "Brett Celestre"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "exchange",
+    "rate",
+    "converter"
+  ],
+  "homepage": "https://github.com/brettcelestre/exchange-rate-converter",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "latest",
+    "angular-ui-router": "^0.4.2"
+  }
+}

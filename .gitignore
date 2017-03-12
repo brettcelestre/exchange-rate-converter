@@ -1,2 +1,18 @@
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
 
+### NPM ###
+npm-debug.log
+node_modules
+
+### Bower ###
+**/bower_components/
+
+### Bundle ###
+client/bundle.js
+
+### Notes ###
 /notes
