@@ -22,5 +22,8 @@
   "dependencies": {
     "angular": "latest",
     "angular-ui-router": "^0.4.2"
+  },
+  "resolutions": {
+    "angular": "1.5.7"
   }
 }
