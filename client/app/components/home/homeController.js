@@ -16,9 +16,4 @@ angular.module('ExchangeRateConverter.home', [])
     console.log('clearError ran');
   }
 
-  let init = () => {
-    HomeService.getCurrencies()
-  }
-  init()
-
 });
