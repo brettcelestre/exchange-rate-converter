@@ -14,5 +14,8 @@ node_modules
 ### Bundle ###
 client/bundle.js
 
+### Config ###
+**/config/config.js
+
 ### Notes ###
 /notes
