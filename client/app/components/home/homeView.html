@@ -1,4 +1,8 @@
 <div ng-controller='HomeController' class='home'>
   <h1>Exchange Rate Converter</h1>
+  <form ng-submit='addAppId()' class='app-id-key'>
+    <input type='text' ng-model='appid' placeholder='App ID' ng-change='clearError()'>
+    <input type="submit" style='display: none;'>
+  </form>
   <div ui-view='converter'></div>
 </div>
