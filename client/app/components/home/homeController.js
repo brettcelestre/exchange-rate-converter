@@ -22,24 +22,14 @@ angular.module('ExchangeRateConverter.home', [])
     $scope.errorAppIDInvalid = false
   }
 
-  // Shows length error message
-  $scope.showLengthError = () => {
-    $scope.errorAppIDLength = true
-  }
-
-  // Shows invalid id error message
-  $scope.showInvalidError = () => {
-    $scope.errorAppIDInvalid = true
-  }
-
   // Shows error message - rootScope listener
   $rootScope.$on('show-appid-length-error', () => {
-    $scope.showLengthError();
+    $scope.errorAppIDLength = true
   })
 
   // Shows length id error message - rootScope listener
   $rootScope.$on('show-appid-invalid-error', () => {
-    $scope.showInvalidError();
+    $scope.errorAppIDInvalid = true
   })
 
 
