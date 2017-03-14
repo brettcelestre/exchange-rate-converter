@@ -4,12 +4,13 @@ angular.module('ExchangeRateConverter.converter.service', [])
 .service('ConverterService', function($http) {
 
   let ConverterData = {
-    'currencySelected': '',
-    'currencyAmount': 0,
+    'fromCurrencyAmount': 0,
+    'toCurrencyAmount': 0,
     'fromType': '',
     'toType': '',
     'currencies': {},
-    'currencySelected': 'United Arab Emirates Dirham'
+    'fromCurrencySelected': 'United Arab Emirates Dirham',
+    'toCurrencySelected': 'United Arab Emirates Dirham'
   }
 
   // Sends user data to /rates post route

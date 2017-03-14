@@ -3,23 +3,32 @@ angular.module('ExchangeRateConverter.converter', [])
 
 .controller('ConverterController', function($scope, $rootScope, $state, ConverterService, HomeService) {
 
-  $scope.currencyAmount = ConverterService.ConverterData.currencyAmount
+  $scope.fromCurrencyAmount = ConverterService.ConverterData.fromCurrencyAmount
+  $scope.toCurrencyAmount = ConverterService.ConverterData.toCurrencyAmount
   $scope.fromType = ConverterService.ConverterData.fromType
   $scope.toType = ConverterService.ConverterData.toType
   $scope.currencies = ConverterService.ConverterData.currencies
-  $scope.currencySelected = ConverterService.ConverterData.currencySelected
+  $scope.fromCurrencySelected = ConverterService.ConverterData.fromCurrencySelected
+  $scope.toCurrencySelected = ConverterService.ConverterData.toCurrencySelected
 
-  // Sends currency data to /rates API to retrieve conversion rate
+  // Sets from currency type
   $scope.setFromCurrencyType = (symbol, fullTitle) => {
     // Stores selected in service
-    ConverterService.ConverterData.currencySelected = fullTitle;
+    ConverterService.ConverterData.fromCurrencySelected = fullTitle;
     ConverterService.ConverterData.fromType = symbol;
   }
 
+  // Sets to currency type
+  $scope.setToCurrencyType = (symbol, fullTitle) => {
+    // Stores selected in service
+    ConverterService.ConverterData.toCurrencySelected = fullTitle;
+    ConverterService.ConverterData.toType = symbol;
+  }
+
   // Sets amount in ConverterService & removes strings
-  $scope.setAmount = (amount) => {
-    ConverterService.ConverterData.currencyAmount = parseInt(amount.replace(/[^0-9]/g, ''))
-    $scope.currencyAmount = ConverterService.ConverterData.currencyAmount
+  $scope.setFromAmount = (amount) => {
+    ConverterService.ConverterData.fromCurrencyAmount = parseInt(amount.replace(/[^0-9]/g, ''))
+    $scope.fromCurrencyAmount = ConverterService.ConverterData.fromCurrencyAmount
   }
 
   $scope.convertAmount = () => {
@@ -29,12 +38,12 @@ angular.module('ExchangeRateConverter.converter', [])
       $rootScope.$emit('show-appid-length-error');
     } else {
       let data = {
-        'fromAmount': $scope.currencyAmount,
+        'fromAmount': $scope.fromCurrencyAmount,
         'fromType': $scope.fromType,
         'toType': $scope.toType,
         'appid': HomeService.appid.id
       }
-      console.log('convertCurrency ran', data);
+      console.log('convertCurrency ran with ', data);
 
       // Sends API req to /rates with data
       ConverterService.rates(data)
@@ -54,10 +63,13 @@ angular.module('ExchangeRateConverter.converter', [])
   }
 
   $scope.init = () => {
-    $scope.currencyAmount = ConverterService.ConverterData.currencyAmount
+    $scope.fromCurrencyAmount = ConverterService.ConverterData.fromCurrencyAmount
+    $scope.toCurrencyAmount = ConverterService.ConverterData.toCurrencyAmount
     $scope.fromType = ConverterService.ConverterData.fromType
+    $scope.toType = ConverterService.ConverterData.toType
     $scope.currencies = ConverterService.ConverterData.currencies
-    $scope.currencySelected = ConverterService.ConverterData.currencySelected
+    $scope.fromCurrencySelected = ConverterService.ConverterData.fromCurrencySelected
+    $scope.toCurrencySelected = ConverterService.ConverterData.toCurrencySelected
 
     ConverterService.getCurrencies()
       .then(data => {

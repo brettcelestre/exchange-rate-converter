@@ -1,11 +1,11 @@
 <div ng-controller='ConverterController' class='converter'>
 
   <div class="from">
-    <h4>Currency</h4>
+    <h4>From Currency</h4>
 
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        {{ currencySelected }}
+        {{ fromCurrencySelected }}
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenu1" role="menu">
@@ -14,13 +14,29 @@
     </div>
 
     <form ng-submit='convertAmount()' class='currency-amount'>
-      <input type='text' ng-model='currencyAmount' placeholder='0' ng-change='setAmount(currencyAmount)'>
+      <input type='text' ng-model='fromCurrencyAmount' placeholder='0' ng-change='setFromAmount(fromCurrencyAmount)'>
       <input type="submit" style='display: none;'>
     </form>
 
   </div>
 
   <div class="to">
+    <h4>To Currency</h4>
+
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        {{ toCurrencySelected }}
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenu1" role="menu">
+        <li ng-repeat="(key, value) in currencies"><a href="#" ng-click="setToCurrencyType(key, value)">{{ key }} | {{ value }}</a></li>
+      </ul>
+    </div>
+
+    <form class='currency-amount'>
+      <input type='text' ng-model='toCurrencyAmount' placeholder='0' readonly="readonly">
+      <input type="submit" style='display: none;'>
+    </form>
   </div>
 
 </div>
