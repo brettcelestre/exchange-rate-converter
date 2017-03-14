@@ -1,19 +1,46 @@
 
 angular.module('ExchangeRateConverter.home', [])
 
-.controller('HomeController', function($scope, $state, HomeService) {
+.controller('HomeController', function($scope, $rootScope, $state, HomeService) {
 
   // App ID
-  $scope.appid = '';
+  $scope.appid = ''
+
+  // Error states
+  $scope.errorAppIDLength = false
+  $scope.errorAppIDInvalid = false
 
   $scope.addAppId = () => {
-    console.log('appSubmit ran with ', $scope.appid);
+    $scope.clearError()
     // Stores users appid in home service
     HomeService.storeID($scope.appid)
   }
 
+  // Removes error message
   $scope.clearError = () => {
-    console.log('clearError ran');
+    $scope.errorAppIDLength = false
+    $scope.errorAppIDInvalid = false
   }
+
+  // Shows length error message
+  $scope.showLengthError = () => {
+    $scope.errorAppIDLength = true
+  }
+
+  // Shows invalid id error message
+  $scope.showInvalidError = () => {
+    $scope.errorAppIDInvalid = true
+  }
+
+  // Shows error message - rootScope listener
+  $rootScope.$on('show-appid-length-error', () => {
+    $scope.showLengthError();
+  })
+
+  // Shows length id error message - rootScope listener
+  $rootScope.$on('show-appid-invalid-error', () => {
+    $scope.showInvalidError();
+  })
+
 
 });

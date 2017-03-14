@@ -1,8 +1,20 @@
 <div ng-controller='HomeController' class='home'>
+
   <h1>Exchange Rate Converter</h1>
+
   <form ng-submit='addAppId()' class='app-id-key'>
-    <input type='text' ng-model='appid' placeholder='App ID' ng-change='clearError()'>
+    <input type='text' ng-model='appid' placeholder='App ID' ng-change='addAppId()'>
     <input type="submit" style='display: none;'>
   </form>
+
+  <div id="error-length" ng-if="errorAppIDLength">
+    <h4>Please Enter an App ID</h4>
+  </div>
+
+  <div id="error-invalid" ng-if="errorAppIDInvalid">
+    <h4>Please Enter an App ID</h4>
+  </div>
+
   <div ui-view='converter'></div>
+
 </div>
