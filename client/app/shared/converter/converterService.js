@@ -6,8 +6,8 @@ angular.module('ExchangeRateConverter.converter.service', [])
   let ConverterData = {
     'fromCurrencyAmount': 0,
     'toCurrencyAmount': 0,
-    'fromType': '',
-    'toType': '',
+    'fromType': 'AED',
+    'toType': 'AED',
     'currencies': {},
     'fromCurrencySelected': 'United Arab Emirates Dirham',
     'toCurrencySelected': 'United Arab Emirates Dirham'

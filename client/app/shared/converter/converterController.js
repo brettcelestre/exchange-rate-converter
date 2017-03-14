@@ -16,6 +16,8 @@ angular.module('ExchangeRateConverter.converter', [])
     // Stores selected in service
     ConverterService.ConverterData.fromCurrencySelected = fullTitle;
     ConverterService.ConverterData.fromType = symbol;
+    $scope.fromCurrencyAmount = ConverterService.ConverterData.fromCurrencyAmount
+    $scope.fromType = ConverterService.ConverterData.fromType
   }
 
   // Sets to currency type
@@ -23,6 +25,8 @@ angular.module('ExchangeRateConverter.converter', [])
     // Stores selected in service
     ConverterService.ConverterData.toCurrencySelected = fullTitle;
     ConverterService.ConverterData.toType = symbol;
+    $scope.toCurrencyAmount = ConverterService.ConverterData.toCurrencyAmount
+    $scope.toType = ConverterService.ConverterData.toType
   }
 
   // Sets amount in ConverterService & removes strings
@@ -48,13 +52,18 @@ angular.module('ExchangeRateConverter.converter', [])
       // Sends API req to /rates with data
       ConverterService.rates(data)
       .then(data => {
-        console.log('ConverterService.rates data = ', data);
+        console.log('ConverterService.rates data = THEN', data);
+
         // If users App ID is incorrect
-        // if ( data.status === 22)
-          // TODO
-        // If App ID error
-          // TODO
-          // $rootScope.$emit('show-appid-invalid-error');
+        if ( data.data.status === 401 && data.data.message == 'invalid_app_id' ) {
+          console.log('invalid app id');
+          $rootScope.$emit('show-appid-invalid-error');
+        // If status is okay
+      } else if ( data.data.status === 200) {
+          console.log('ConverterService.rates data SUCCESS = ', data);
+          ConverterService.ConverterData.toCurrencyAmount = data.data.convertedAmount
+          $scope.toCurrencyAmount = ConverterService.ConverterData.toCurrencyAmount
+        }
       })
       .catch(function(data){
         console.error('Error with login: ', data);
