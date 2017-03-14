@@ -4,18 +4,22 @@ angular.module('ExchangeRateConverter.converter', [])
 .controller('ConverterController', function($scope, $rootScope, $state, ConverterService, HomeService) {
 
   $scope.currencyAmount = ConverterService.ConverterData.currencyAmount
-  $scope.currencyType = ConverterService.ConverterData.currencyType
+  $scope.fromType = ConverterService.ConverterData.fromType
+  $scope.toType = ConverterService.ConverterData.toType
   $scope.currencies = ConverterService.ConverterData.currencies
   $scope.currencySelected = ConverterService.ConverterData.currencySelected
 
   // Sends currency data to /rates API to retrieve conversion rate
-  $scope.setCurrency = (selected) => {
+  $scope.setFromCurrencyType = (symbol, fullTitle) => {
     // Stores selected in service
-    ConverterService.ConverterData.currencySelected = selected;
+    ConverterService.ConverterData.currencySelected = fullTitle;
+    ConverterService.ConverterData.fromType = symbol;
   }
 
-  $scope.validateCurrencyAmount = () => {
-    // TODO
+  // Sets amount in ConverterService & removes strings
+  $scope.setAmount = (amount) => {
+    ConverterService.ConverterData.currencyAmount = parseInt(amount.replace(/[^0-9]/g, ''))
+    $scope.currencyAmount = ConverterService.ConverterData.currencyAmount
   }
 
   $scope.convertAmount = () => {
@@ -25,9 +29,10 @@ angular.module('ExchangeRateConverter.converter', [])
       $rootScope.$emit('show-appid-length-error');
     } else {
       let data = {
-        'amount': $scope.currencyAmount,
-        'type': $scope.currencyType,
-        'appid': HomeService.appid
+        'fromAmount': $scope.currencyAmount,
+        'fromType': $scope.fromType,
+        'toType': $scope.toType,
+        'appid': HomeService.appid.id
       }
       console.log('convertCurrency ran', data);
 
@@ -50,7 +55,7 @@ angular.module('ExchangeRateConverter.converter', [])
 
   $scope.init = () => {
     $scope.currencyAmount = ConverterService.ConverterData.currencyAmount
-    $scope.currencyType = ConverterService.ConverterData.currencyType
+    $scope.fromType = ConverterService.ConverterData.fromType
     $scope.currencies = ConverterService.ConverterData.currencies
     $scope.currencySelected = ConverterService.ConverterData.currencySelected
 
