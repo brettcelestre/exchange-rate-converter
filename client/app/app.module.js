@@ -7,6 +7,7 @@ let routes = require('./app.routes.js'),
 angular.module('ExchangeRateConverter', [
   'ui.router',
   'appRoutes',
+  'ngLodash',
   'ExchangeRateConverter.home',
   'ExchangeRateConverter.home.service',
   'ExchangeRateConverter.converter',
