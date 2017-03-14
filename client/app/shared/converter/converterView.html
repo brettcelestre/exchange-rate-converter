@@ -1,7 +1,5 @@
 <div ng-controller='ConverterController' class='converter'>
 
-  <!-- <h3>Converter</h3> -->
-
   <div class="from">
     <h4>Currency</h4>
 
@@ -11,7 +9,7 @@
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenu1" role="menu">
-        <li ng-repeat='(key, value) in currencies'><a href="#">{{ value }}</a></li>
+        <li ng-repeat="(key, value) in currencies"><a href="#" ng-click="convertCurrency(value)">{{ key }} | {{ value }}</a></li>
       </ul>
     </div>
 

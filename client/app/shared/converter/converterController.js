@@ -2,17 +2,22 @@
 angular.module('ExchangeRateConverter.converter', [])
 
 .controller('ConverterController', function($scope, $state, ConverterService, HomeService) {
+  console.log("$scope.currencySelected", $scope.currencySelected);
 
-  $scope.currencyAmount = 0
-  $scope.currencyType = ''
-  $scope.currencies = {}
-  $scope.currencySelected = ''
+  $scope.currencyAmount = ConverterService.ConverterData.currencyAmount
+  $scope.currencyType = ConverterService.ConverterData.currencyType
+  $scope.currencies = ConverterService.ConverterData.currencies
+  $scope.currencySelected = ConverterService.ConverterData.currencySelected
 
   // Sends currency data to /rates API to retrieve conversion rate
-  $scope.convertCurrency = () => {
+  $scope.convertCurrency = (selected) => {
+    // Stores selected
+    ConverterService.ConverterData.currencySelected = selected;
+
     // Checks if the user has entered an ID
     if ( HomeService.appid.length < 1 ){
       // Display error
+      console.log("Please Enter an API ID");
     } else {
       let data = {
         'amount': $scope.currencyAmount,
@@ -36,19 +41,15 @@ angular.module('ExchangeRateConverter.converter', [])
     }
   }
 
-  let init = () => {
+  $scope.init = () => {
     ConverterService.getCurrencies()
       .then(data => {
-        console.log("DATA", data);
-        $scope.currencies = data;
-        // Assigned a default selected
-        // $scope.currencySelected = data
-        // TODO
+        $scope.currencies = ConverterService.ConverterData.currencies
       })
       .catch(function(data){
         console.error('Error with login: ', data);
       });
   }
-  init()
+  $scope.init()
 
 });
