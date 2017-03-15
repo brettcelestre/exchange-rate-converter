@@ -1,3 +1,21 @@
+.home {
+  width: 100%;
+  height: 100%; }
+
+.content {
+  background-color: green;
+  max-width: 450px;
+  width: 100%;
+  margin: auto 0; }
+
+.home-controller {
+  margin: auto 0;
+  width: 100%;
+  padding: 15px; }
+  .home-controller .app-id-key {
+    width: 100%;
+    height: 40px; }
+
 .scrollable-menu {
   height: auto;
   max-height: 300px;

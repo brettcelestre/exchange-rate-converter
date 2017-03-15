@@ -1,19 +1,25 @@
-<div ng-controller='HomeController' class='home'>
+<div ng-controller='HomeController' class='row home-controller'>
 
-  <h1>Exchange Rate Converter</h1>
+  <!-- <div> -->
+    <!-- <div class='row'> -->
+      <h1>Exchange Rate Converter</h1>
+    <!-- </div> -->
 
-  <form ng-submit='addAppId()' class='app-id-key'>
-    <input type='text' ng-model='appid' placeholder='App ID' ng-change='addAppId()'>
-    <input type="submit" style='display: none;'>
-  </form>
+    <!-- <div class='row'> -->
+      <form ng-submit='addAppId()' class='app-id-key'>
+        <input type='text' ng-model='appid' placeholder='App ID' ng-change='addAppId()'>
+        <input type="submit" style='display: none;'>
+      </form>
 
-  <div id="error-length" ng-if="errorAppIDLength">
-    <h4>Please Enter an App ID</h4>
-  </div>
+      <div id="error-length" ng-if="errorAppIDLength">
+        <h4>Please Enter an App ID</h4>
+      </div>
 
-  <div id="error-invalid" ng-if="errorAppIDInvalid">
-    <h4>Your App ID is invalid</h4>
-  </div>
+      <div id="error-invalid" ng-if="errorAppIDInvalid">
+        <h4>Your App ID is invalid</h4>
+      </div>
+    </div>
+  <!-- </div> -->
 
   <div ui-view='converter'></div>
 

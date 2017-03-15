@@ -13,7 +13,7 @@ module.exports = {
         return false;
       }
       // Parses body into JSON
-      var data = JSON.parse(body);
+      let data = JSON.parse(body);
 
       if ( data.base == 'USD' ) {
         // Stores from rate based off USD at $1
