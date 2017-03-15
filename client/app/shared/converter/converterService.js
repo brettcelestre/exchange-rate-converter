@@ -7,10 +7,10 @@ angular.module('ExchangeRateConverter.converter.service', [])
     'fromCurrencyAmount': 0,
     'toCurrencyAmount': 0,
     'fromType': 'AED',
-    'toType': 'AED',
+    'toType': 'AFN',
     'currencies': {},
     'fromCurrencySelected': 'United Arab Emirates Dirham',
-    'toCurrencySelected': 'United Arab Emirates Dirham'
+    'toCurrencySelected': 'Afghan Afghani'
   }
 
   // Sends user data to /rates post route
