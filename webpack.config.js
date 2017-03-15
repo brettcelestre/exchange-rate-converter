@@ -6,6 +6,7 @@ let path = require('path'),
 module.exports = {
   context: __dirname + '/client/app/',
   entry: './app.module.js',
+  watch: true,
   output: {
     path: buildPath,
     filename: 'bundle.js',
