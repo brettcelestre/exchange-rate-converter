@@ -1,7 +1,7 @@
 
 angular.module('ExchangeRateConverter.converter', [])
 
-.controller('ConverterController', function($scope, $rootScope, $state, ConverterService, HomeService) {
+.controller('ConverterController', function($scope, $rootScope, $state, ConverterService, HomeService, lodash) {
 
   $scope.fromCurrencyAmount = ConverterService.ConverterData.fromCurrencyAmount
   $scope.toCurrencyAmount = ConverterService.ConverterData.toCurrencyAmount
@@ -35,10 +35,10 @@ angular.module('ExchangeRateConverter.converter', [])
     $scope.fromCurrencyAmount = ConverterService.ConverterData.fromCurrencyAmount
   }
 
-  // TODO
-  // utilize lodash delay to invoke convertAmount() so user doesn't
-  // have to hit 'enter'
-  // https://lodash.com/docs/4.17.4#delay
+  // Invokes convertAmount on currency input change
+  $scope.convertUpdate = lodash.debounce( () => {
+    $scope.convertAmount();
+  }, 1500);
 
   $scope.convertAmount = () => {
     // Checks if the user has entered an ID
