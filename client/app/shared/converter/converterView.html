@@ -14,7 +14,7 @@
     </button>
     <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenu1" role="menu">
       <li ng-repeat="(key, value) in currencies">
-        <a href="#" ng-if="key !== toType" ng-click="setFromCurrencyType(key, value)">{{ key }} | {{ value }}</a>
+        <a href="#" ng-if="key !== toType" ng-click="setFromCurrencyType(key, value); convertUpdate()">{{ key }} | {{ value }}</a>
       </li>
     </ul>
   </div>
@@ -33,7 +33,7 @@
     </button>
     <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenu1" role="menu">
       <li ng-repeat="(key, value) in currencies">
-        <a href="#" ng-if="key !== fromType" ng-click="setToCurrencyType(key, value)">{{ key }} | {{ value }}</a>
+        <a href="#" ng-if="key !== fromType" ng-click="setToCurrencyType(key, value); convertUpdate()">{{ key }} | {{ value }}</a>
       </li>
     </ul>
   </div>

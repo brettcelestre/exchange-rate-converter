@@ -38,8 +38,9 @@ angular.module('ExchangeRateConverter.converter', [])
   // Invokes convertAmount on currency input change
   $scope.convertUpdate = lodash.debounce( () => {
     $scope.convertAmount();
-  }, 1500);
+  }, 1225);
 
+  // Makes API request with current data
   $scope.convertAmount = () => {
     // Checks if the user has entered an ID
     if ( HomeService.appid['id'].length < 1 ) {
