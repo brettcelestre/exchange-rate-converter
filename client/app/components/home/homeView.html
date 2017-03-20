@@ -1,4 +1,4 @@
-<div ng-controller='HomeController' class='row home-controller'>
+<div ng-controller='HomeController' class='home-controller'>
 
   <h2>Exchange Rate Converter</h2>
 
@@ -8,11 +8,11 @@
   </form>
 
   <div id="error-length" ng-if="errorAppIDLength">
-    <h4>Please Enter an App ID</h4>
+    <h4>Please Enter an App ID.</h4>
   </div>
 
   <div id="error-invalid" ng-if="errorAppIDInvalid">
-    <h4>Your App ID is invalid</h4>
+    <h4>Your App ID is invalid.</h4>
   </div>
 
   <div ui-view='converter'></div>

@@ -32,5 +32,4 @@ angular.module('ExchangeRateConverter.home', [])
     $scope.errorAppIDInvalid = true
   })
 
-
 });
