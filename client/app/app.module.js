@@ -1,4 +1,4 @@
-let routes = require('./app.routes.js'),
+var routes = require('./app.routes.js'),
     homeController = require('./components/home/homeController.js'),
     homeService = require('./components/home/homeService.js'),
     converterController = require('./shared/converter/converterController.js'),

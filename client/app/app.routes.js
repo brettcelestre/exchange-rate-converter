@@ -12,7 +12,7 @@ angular.module('appRoutes', [])
     // Home state config
     .state('home', {
       url: '/',
-      // Sets default children ui-views to home.login
+      // Sets default children ui-views to home.converter
       params: {
         autoActivateChild: 'home.converter'
       },

@@ -3,6 +3,11 @@ angular.module('ExchangeRateConverter.converter', [])
 
 .controller('ConverterController', function($scope, $rootScope, $state, ConverterService, HomeService, lodash) {
 
+  $scope.testLength = 4
+  $scope.testTrue = function() {
+    return true
+  }
+
   $scope.fromCurrencyAmount = ConverterService.ConverterData.fromCurrencyAmount
   $scope.toCurrencyAmount = ConverterService.ConverterData.toCurrencyAmount
   $scope.fromType = ConverterService.ConverterData.fromType
@@ -12,7 +17,7 @@ angular.module('ExchangeRateConverter.converter', [])
   $scope.toCurrencySelected = ConverterService.ConverterData.toCurrencySelected
 
   // Sets from currency type
-  $scope.setFromCurrencyType = (symbol, fullTitle) => {
+  $scope.setFromCurrencyType = function(symbol, fullTitle) {
     // Stores selected in service
     ConverterService.ConverterData.fromCurrencySelected = fullTitle;
     ConverterService.ConverterData.fromType = symbol;
@@ -21,7 +26,7 @@ angular.module('ExchangeRateConverter.converter', [])
   }
 
   // Sets to currency type
-  $scope.setToCurrencyType = (symbol, fullTitle) => {
+  $scope.setToCurrencyType = function(symbol, fullTitle) {
     // Stores selected in service
     ConverterService.ConverterData.toCurrencySelected = fullTitle;
     ConverterService.ConverterData.toType = symbol;
@@ -30,24 +35,24 @@ angular.module('ExchangeRateConverter.converter', [])
   }
 
   // Sets amount in ConverterService & removes strings
-  $scope.setFromAmount = (amount) => {
+  $scope.setFromAmount = function(amount) {
     ConverterService.ConverterData.fromCurrencyAmount = parseInt(amount.replace(/[^0-9]/g, ''))
     $scope.fromCurrencyAmount = ConverterService.ConverterData.fromCurrencyAmount
   }
 
   // Invokes convertAmount on currency input change
-  $scope.convertUpdate = lodash.debounce( () => {
+  $scope.convertUpdate = lodash.debounce( function() {
     $scope.convertAmount();
   }, 1225);
 
   // Makes API request with current data
-  $scope.convertAmount = () => {
+  $scope.convertAmount = function() {
     // Checks if the user has entered an ID
     if ( HomeService.appid['id'].length < 1 ) {
       // Emits length error to HomeController
       $rootScope.$emit('show-appid-length-error');
     } else {
-      let data = {
+      var data = {
         'fromAmount': $scope.fromCurrencyAmount,
         'fromType': $scope.fromType,
         'toType': $scope.toType,
@@ -57,7 +62,7 @@ angular.module('ExchangeRateConverter.converter', [])
 
       // Sends API req to /rates with data
       ConverterService.rates(data)
-      .then(data => {
+      .then(function(data) {
         console.log('ConverterService.rates data = THEN', data);
 
         // If users App ID is incorrect
@@ -77,7 +82,7 @@ angular.module('ExchangeRateConverter.converter', [])
     }
   }
 
-  $scope.init = () => {
+  $scope.init = function() {
     $scope.fromCurrencyAmount = ConverterService.ConverterData.fromCurrencyAmount
     $scope.toCurrencyAmount = ConverterService.ConverterData.toCurrencyAmount
     $scope.fromType = ConverterService.ConverterData.fromType
@@ -87,7 +92,7 @@ angular.module('ExchangeRateConverter.converter', [])
     $scope.toCurrencySelected = ConverterService.ConverterData.toCurrencySelected
 
     ConverterService.getCurrencies()
-      .then(data => {
+      .then(function(data) {
         $scope.currencies = ConverterService.ConverterData.currencies
       })
       .catch(function(data){

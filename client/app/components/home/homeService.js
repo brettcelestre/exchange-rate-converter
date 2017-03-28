@@ -3,12 +3,12 @@ angular.module('ExchangeRateConverter.home.service', [])
 
 .service('HomeService', function($http) {
 
-  let appid = {
+  var appid = {
     'id': ''
   }
 
   // Stores App ID in appid
-  let storeID = function(data) {
+  var storeID = function(data) {
     appid['id'] = data
   };
 

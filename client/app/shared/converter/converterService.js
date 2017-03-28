@@ -3,7 +3,7 @@ angular.module('ExchangeRateConverter.converter.service', [])
 
 .service('ConverterService', function($http) {
 
-  let ConverterData = {
+  var ConverterData = {
     'fromCurrencyAmount': 0,
     'toCurrencyAmount': 0,
     'fromType': 'AED',
@@ -14,7 +14,7 @@ angular.module('ExchangeRateConverter.converter.service', [])
   }
 
   // Sends user data to /rates post route
-  let rates = function(data) {
+  var rates = function(data) {
     return $http({
       method: 'POST',
       url: '/rates',
@@ -30,7 +30,7 @@ angular.module('ExchangeRateConverter.converter.service', [])
   };
 
   // Gets all currencies from API
-  let getCurrencies = () => {
+  var getCurrencies = function() {
     return $http({
       method: 'GET',
       url: 'https://openexchangerates.org/api/currencies.json',
