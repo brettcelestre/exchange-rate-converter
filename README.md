@@ -1,16 +1,33 @@
 # Exchange Rate Converter
 
-> A single page app for converting exchange rates based on services provided by [Open Exchange Rates](https://docs.openexchangerates.org/).
+A single page app for converting exchange rates based on services provided by [Open Exchange Rates](https://docs.openexchangerates.org/).
 
-## Features
+## Getting Started
+
+``` bash
+# install dependencies
+npm install --save
+bower install --save
+
+# serve at localhost:8080
+npm start
+
+# run all tests
+npm test
+```
+
+## Tech Stack
 
 * AngularJS
 * Node/Express
-* ES6
-* ESLint
+* Bootstrap
 * SASS
+* Lodash
 * Webpack
 * Gulp
+* Jasmine
+* Karma
+* ESLint
 
 ## Application Organization
 
@@ -33,18 +50,10 @@ server/
   rates/
   server.js
 tests/
+  unit/
 ```
 
-## Getting Started
+## To Do
 
-``` bash
-# install dependencies
-npm install --save
-bower install --save
-
-# serve at localhost:8080
-npm start
-
-# run all tests
-npm test
-```
+* End to end tests
+* UX elements (loading spinner, responsive design)
