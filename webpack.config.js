@@ -10,6 +10,9 @@ module.exports = {
   output: {
     path: buildPath,
     filename: 'bundle.js',
+    exclude: /(node_modules|bower_components)/,
+    // loader: "eslint-loader",
+    loader: "babel-loader",
     publicPath: '/build/'
   },
   module: {
