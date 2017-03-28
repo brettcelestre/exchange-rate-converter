@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "concurrently \"nodemon server/server.js\" \"gulp --watch\"",
-    "test": "npm test"
+    "test": "./node_modules/karma/bin/karma start karma.conf.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/brettcelestre/exchange-rate-converter#readme",
   "dependencies": {
+    "angular": "^1.6.3",
+    "angular-mocks": "^1.6.3",
     "body-parser": "^1.17.1",
     "bower": "^1.8.0",
     "concurrently": "^3.4.0",
@@ -30,6 +32,7 @@
     "eslint-loader": "^1.6.3",
     "express": "^4.15.2",
     "gulp-webpack": "^1.5.0",
+    "karma-es6-shim": "^1.0.0",
     "morgan": "^1.8.1",
     "request": "^2.81.0",
     "webpack": "^2.2.1"
@@ -38,8 +41,15 @@
     "gulp": "^3.9.1",
     "gulp-sass": "^3.1.0",
     "jasmine": "^2.5.3",
-    "mocha": "^3.2.0",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.5.0",
+    "karma-chai": "^0.1.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-mocha": "^1.3.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-sinon": "^1.0.5",
     "path": "^0.12.7",
+    "sinon": "^2.1.0",
     "webpack": "^2.2.1"
   }
 }
