@@ -13,11 +13,11 @@ module.exports = {
         return false;
       }
       // Parses body into JSON
-      var data = JSON.parse(body);
+      let data = JSON.parse(body);
 
       if ( data.base == 'USD' ) {
         // Stores from rate based off USD at $1
-        let fromRate = data.rates[req.body.fromType],
+        var fromRate = data.rates[req.body.fromType],
         // Stores to rate based off USD at $1
         toRate = data.rates[req.body.toType],
         // Finds rate
@@ -25,7 +25,7 @@ module.exports = {
         // Finds converted amount
         conversionAmount = (req.body.fromAmount * toRate) / fromRate
 
-        let conversionRate = {
+        var conversionRate = {
           'rate': rate,
           'convertedAmount': (conversionAmount).toFixed(2),
           'status': 200
