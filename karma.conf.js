@@ -11,18 +11,19 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // Application Modules
-      // 'client/app/bower_components/angular/angular.js',
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
+      'node_modules/ng-lodash/build/ng-lodash.min.js',
       // Application files
-      'client/app/app.module.js',
-      'client/app/app.routes.js',
+      // 'client/app/app.module.js',
+      // 'client/app/app.routes.js',
       'client/app/components/home/homeController.js',
       'client/app/components/home/homeService.js',
       'client/app/shared/converter/converterController.js',
       'client/app/shared/converter/converterService.js',
       // Unit test files
-      'tests/unit/test.spec.js'
+      'tests/unit/home.spec.js',
+      'tests/unit/converter.spec.js'
     ],
 
     // list of files to exclude
